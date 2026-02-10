@@ -1,0 +1,26 @@
+import { createElement } from '../render.js';
+
+const createControlFilmTemplate = () => `
+  <div class="film-card__controls">
+    <button class="film-card__controls-item film-card__controls-item--add-to-watchlist" type="button">Add to watchlist</button>
+    <button class="film-card__controls-item film-card__controls-item--mark-as-watched" type="button">Mark as watched</button>
+    <button class="film-card__controls-item film-card__controls-item--favorite" type="button">Mark as favorite</button>
+</div>`;
+
+export default class ControlFilmView {
+  getTemplate() {
+    return createControlFilmTemplate();
+  }
+
+  getElement() {
+    if (!this.element) {
+      this.element = createElement(this.getTemplate());
+    }
+
+    return this.element;
+  }
+
+  removeElement() {
+    this.element = null;
+  }
+}
