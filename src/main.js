@@ -4,6 +4,8 @@ import FilterFilmsView from './view/fileter-films-view';
 import SortFilmsView from './view/sort-films-view';
 import Statistic from './view/statistic-view.js';
 import { render } from './render.js';
+import './data.js';
+import './model/films-model.js';
 
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
