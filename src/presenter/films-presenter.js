@@ -42,9 +42,10 @@ export default class FilmsPresenter {
   popupCommentsList = new PopupCommentsListView();
   popupCommentsNew = new PopupCommentsNewView();
 
-  renderCard = (cardsContainer) => {
+  renderCard = (cardsContainer, data) => {
+    const { comments, info } = data;
     const cardComponent = new CardFilmView();
-    const infoComponent = new InfoFilmView();
+    const infoComponent = new InfoFilmView(comments, info);
     const controlComponent = new ControlFilmView();
 
     render(cardComponent, cardsContainer);
@@ -53,15 +54,17 @@ export default class FilmsPresenter {
   };
 
 
-  init = (mainContainer) => {
+  init = (mainContainer, films) => {
     this.mainContainer = mainContainer;
+    this.filmsModel = films;
+    this.dataFilms = [...this.filmsModel.getFilms()];
 
     render (this.films, this.mainContainer);
     render (this.filmsList, this.films.getElement());
     render (this.filmsContainer, this.filmsList.getElement());
 
-    for (let i = 0; i < 5; i += 1) {
-      this.renderCard(this.filmsContainer.getElement());
+    for (let i = 0; i < this.dataFilms.length; i += 1) {
+      this.renderCard(this.filmsContainer.getElement(), this.dataFilms[i]);
     }
 
     render(this.showMoreBtn, this.filmsList.getElement());
@@ -72,7 +75,7 @@ export default class FilmsPresenter {
     render (this.filmsTopContainer, this.filmsListTop.getElement());
 
     for (let i = 0; i < 2; i += 1) {
-      this.renderCard(this.filmsTopContainer.getElement());
+      this.renderCard(this.filmsTopContainer.getElement(), this.dataFilms[i]);
     }
 
     // most commented films section
@@ -80,11 +83,11 @@ export default class FilmsPresenter {
     render(this.filmsMostCommentedContainer, this.filmsListMostCommented.getElement());
 
     for (let i = 0; i < 2; i += 1) {
-      this.renderCard(this.filmsMostCommentedContainer.getElement());
+      this.renderCard(this.filmsMostCommentedContainer.getElement(), this.dataFilms[i]);
     }
 
     //pop-up card film
-    render (this.popup, this.mainContainer.parentElement);
+    /* render (this.popup, this.mainContainer.parentElement);
     render (this.popupForm, this.popup.getElement());
     render (this.popupTop, this.popupForm.getElement());
     render (this.popupClose, this.popupTop.getElement());
@@ -93,6 +96,6 @@ export default class FilmsPresenter {
     render (this.popupBottom, this.popupForm.getElement());
     render (this.popupComments, this.popupBottom.getElement());
     render (this.popupCommentsList, this.popupComments.getElement());
-    render (this.popupCommentsNew, this.popupComments.getElement());
+    render (this.popupCommentsNew, this.popupComments.getElement()); */
   };
 }
