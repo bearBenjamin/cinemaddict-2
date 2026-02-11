@@ -1,7 +1,9 @@
-import { getFilm } from '../data.js';
-
 export default class FilmsModel {
-  films = Array.from({length: 5}, getFilm);
+  #films = [];
 
-  getFilms = () => this.films;
+  constructor(films) {
+    this.#films = films;
+  }
+
+  getFilms = () => this.#films;
 }
