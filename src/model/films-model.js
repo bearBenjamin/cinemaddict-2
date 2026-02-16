@@ -5,5 +5,7 @@ export default class FilmsModel {
     this.#films = films;
   }
 
-  getFilms = () => this.#films;
+  get films () {
+    return this.#films;
+  }
 }

@@ -7,19 +7,21 @@ const createPoupControlTemplate = () => `<section class="film-details__controls"
       </section>`;
 
 export default class PopupControlView {
-  getTemplate() {
+  #element = null;
+
+  get template() {
     return createPoupControlTemplate();
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

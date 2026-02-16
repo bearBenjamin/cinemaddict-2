@@ -20,25 +20,29 @@ const createInfoFilmTemplate = (comments, info) => {
 </a>`;
 };
 export default class InfoFilmView {
+  #element = null;
+  #comments = null;
+  #info = null;
+
   constructor (comments, info) {
-    this.comments = comments;
-    this.info = info;
+    this.#comments = comments;
+    this.#info = info;
   }
 
-  getTemplate() {
-    return createInfoFilmTemplate(this.comments, this.info);
+  get template() {
+    return createInfoFilmTemplate(this.#comments, this.#info);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }
 

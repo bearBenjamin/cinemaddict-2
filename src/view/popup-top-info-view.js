@@ -74,23 +74,26 @@ const createPopupInfoTemplate = (data) => {
 
 };
 export default class PopupInfoView {
+  #element = null;
+  #data = null;
+
   constructor (data) {
-    this.data = data;
+    this.#data = data;
   }
 
-  getTemplate() {
-    return createPopupInfoTemplate(this.data);
+  get template() {
+    return createPopupInfoTemplate(this.#data);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

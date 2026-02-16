@@ -1,15 +1,15 @@
 import { createElement } from '../render.js';
 
-const createListTopFilmsTemplate = () =>
-  `<section class="films-list films-list--extra">
-      <h2 class="films-list__title">Top rated</h2>
+const createListFilmsEmptyTemplate = () =>
+  `<section class="films-list">
+      <h2 class="films-list__title">There are no movies in our database</h2>
     </section>`;
 
-export default class ListTopFilmsView {
+export default class ListFilmsEmptyView {
   #element = null;
 
   get template() {
-    return createListTopFilmsTemplate();
+    return createListFilmsEmptyTemplate();
   }
 
   get element() {

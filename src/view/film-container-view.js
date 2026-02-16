@@ -1,22 +1,28 @@
 import { createElement } from '../render.js';
 
-const createContainerFilmTemplate = () => `<article class="film-card">
-</article>`;
+const createContainerFilmTemplate = (id) => `<article class="film-card" data-id="${id}"></article>`;
 
 export default class CardFilmView {
-  getTemplate() {
-    return createContainerFilmTemplate();
+  #element = null;
+  #id = null;
+
+  constructor (id) {
+    this.#id = id;
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get template() {
+    return createContainerFilmTemplate(this.#id);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }
