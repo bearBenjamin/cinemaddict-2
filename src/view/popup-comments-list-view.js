@@ -78,24 +78,28 @@ const createPopupCommentsListTemplate = (ids, comments) => {
 
 
 export default class PopupCommentsListView {
+  #element = null;
+  #ids = null;
+  #comments = null;
+
   constructor (ids, comments) {
-    this.ids = ids;
-    this.comments = comments;
+    this.#ids = ids;
+    this.#comments = comments;
   }
 
-  getTemplate() {
-    return createPopupCommentsListTemplate(this.ids, this.comments);
+  get template() {
+    return createPopupCommentsListTemplate(this.#ids, this.#comments);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

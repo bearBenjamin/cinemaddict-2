@@ -185,7 +185,7 @@ const mockComments = [
 const getInfoFilm = () => {
   const mockFilms = [
     {
-      id: 0,
+      id: '0',
       title: 'Тайна Коко',
       alternativeTitle: 'Coco',
       totalRating: 8.7,
@@ -202,7 +202,7 @@ const getInfoFilm = () => {
       description: 'Юный Мигель мечтает стать музыкантом и попадает в красочный Мир предков.'
     },
     {
-      id: 1,
+      id: '1',
       title: 'Зеленая миля',
       alternativeTitle: 'The Green Mile',
       totalRating: 9.1,
@@ -219,7 +219,7 @@ const getInfoFilm = () => {
       description: 'Надзиратель сталкивается с заключенным, обладающим божественным даром исцеления.'
     },
     {
-      id: 2,
+      id: '2',
       title: 'Начало',
       alternativeTitle: 'Inception',
       totalRating: 8.8,
@@ -236,7 +236,7 @@ const getInfoFilm = () => {
       description: 'Вор извлекает секреты из снов, но теперь ему нужно внедрить идею в чужой разум.'
     },
     {
-      id: 3,
+      id: '3',
       title: 'Интерстеллар',
       alternativeTitle: 'Interstellar',
       totalRating: 8.6,
@@ -253,7 +253,7 @@ const getInfoFilm = () => {
       description: 'Группа исследователей отправляется через червоточину в поисках нового дома для людей.'
     },
     {
-      id: 4,
+      id: '4',
       title: 'Паразиты',
       alternativeTitle: 'Gisaengchung',
       totalRating: 8.5,
@@ -270,7 +270,7 @@ const getInfoFilm = () => {
       description: 'Бедная семья хитростью внедряется в жизнь богачей, что приводит к трагедии.'
     },
     {
-      id: 5,
+      id: '5',
       title: 'Гладиатор',
       alternativeTitle: 'Gladiator',
       totalRating: 8.6,
@@ -287,7 +287,7 @@ const getInfoFilm = () => {
       description: 'Преданный полководец становится рабом и сражается на арене ради мести тирану.'
     },
     {
-      id: 6,
+      id: '6',
       title: 'Амели',
       alternativeTitle: 'Le Fabuleux Destin d\'Amélie Poulain',
       totalRating: 8.0,
@@ -304,7 +304,7 @@ const getInfoFilm = () => {
       description: 'Застенчивая девушка меняет жизни окружающих к лучшему с помощью добрых чудес.'
     },
     {
-      id: 7,
+      id: '7',
       title: 'Одержимость',
       alternativeTitle: 'Whiplash',
       totalRating: 8.4,
@@ -321,7 +321,7 @@ const getInfoFilm = () => {
       description: 'Талантливый барабанщик идет к мечте через изнурительные тренировки тирана-дирижера.'
     },
     {
-      id: 8,
+      id: '8',
       title: 'Большой куш',
       alternativeTitle: 'Snatch',
       totalRating: 8.5,
@@ -338,7 +338,7 @@ const getInfoFilm = () => {
       description: 'Криминальный мир Лондона закручивается в безумную карусель из-за похищенного алмаза.'
     },
     {
-      id: 9,
+      id: '9',
       title: 'Ла-Ла Ленд',
       alternativeTitle: 'La La Land',
       totalRating: 7.9,
@@ -395,7 +395,7 @@ const getFilm = () => {
   return filmData;
 };
 
-const films = Array.from({ length: 5 }, getFilm);
+const films = Array.from({ length: 9}, getFilm);
 const commentIds =new Set(films.flatMap((film) => film.comments));
 const comments = mockComments.filter((comment) => commentIds.has(comment.id));
 

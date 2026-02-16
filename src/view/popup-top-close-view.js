@@ -5,19 +5,21 @@ const createPopupCloseTemplate = () => `<div class="film-details__close">
       </div>`;
 
 export default class PopupCloseView {
-  getTemplate() {
+  #element = null;
+
+  get template() {
     return createPopupCloseTemplate();
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

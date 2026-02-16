@@ -13,13 +13,13 @@ const siteMainElement = document.querySelector('.main');
 const siteFooterElement = document.querySelector('.footer');
 const statisticDate = siteFooterElement.querySelector('.footer__statistics');
 
-const filmsPresenter = new FilmsPresenter ();
 const filmsModel = new FilmsModel(films);
 const commentsModel = new CommentsModel(comments);
+const filmsPresenter = new FilmsPresenter (siteMainElement, filmsModel, commentsModel);
 
-render (new UserProfileView, siteHeaderElement);
-render (new FilterFilmsView, siteMainElement);
-render (new SortFilmsView, siteMainElement);
-render (new Statistic, statisticDate);
+render (new UserProfileView(), siteHeaderElement);
+render (new FilterFilmsView(), siteMainElement);
+render (new SortFilmsView(), siteMainElement); // при пустом списке фильмов должно быть скрыто - сейчас нереализовано
+render (new Statistic(), statisticDate); // при пустом списке фильмов статистика равна нулю - сейчас нереализовано
 
-filmsPresenter.init(siteMainElement, filmsModel, commentsModel);
+filmsPresenter.init();
