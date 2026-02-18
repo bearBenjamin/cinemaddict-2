@@ -1,24 +1,34 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createListFilmsTemplate = () => `<div class="films-list__container">
 </div>`;
 
-export default class ListFilmsContainerView {
-  #element = null;
-
+export default class ListFilmsContainerView extends AbstractView {
   get template() {
     return createListFilmsTemplate();
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
+  setClickHandler = (callback) => {
+    this._callback.click = callback;
+    this.element.addEventListener('click', this.#clickHandler);
+  };
+
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    const cardElement = evt.target.closest('.film-card');
+    const isControlClicked = evt.target.closest('.film-card__controls');
+
+    if (!cardElement) {
+      return;
     }
 
-    return this.#element;
-  }
+    if (isControlClicked) {
+      return;
+    }
 
-  removeElement() {
-    this.#element = null;
-  }
+    const id = cardElement.dataset.id;
+    document.querySelector('body').classList.add('hide-overflow');
+
+    this._callback.click(id);
+  };
 }

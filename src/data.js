@@ -367,6 +367,8 @@ const getFilm = () => {
     runtime, genre, description
   } = infoFilm;
 
+  const alreadyWatched = getRandomBoolean();
+
   const filmData = {
     id: id,
     comments: getRandomCommentsIds(),
@@ -386,8 +388,8 @@ const getFilm = () => {
     },
     userDetails: {
       watchlist: getRandomBoolean(),
-      alreadyWatched: getRandomBoolean(),
-      watchingDate: '2019-04-12T16:12:32.554Z',
+      alreadyWatched,
+      watchingDate: (alreadyWatched) ? getRandomCommentDate() : null,
       favorite: getRandomBoolean()
     }
   };

@@ -1,24 +1,25 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createPoupFilmTemplate = () =>
   '<section class="film-details"></section>';
 
-export default class PopupView {
-  #element = null;
-
+export default class PopupView extends AbstractView {
   get template() {
     return createPoupFilmTemplate();
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
+  setClickHandler = (callback) => {
+    this._callback.click = callback;
+    this.element.addEventListener('click', this.#clickHandler);
+  };
+
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    const btnClose = evt.target.closest('.film-details__close-btn');
+    if (!btnClose) {
+      return;
     }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
-  }
+    document.querySelector('body').classList.remove('hide-overflow');
+    this._callback.click();
+  };
 }

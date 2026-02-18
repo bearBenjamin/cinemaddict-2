@@ -1,4 +1,4 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createControlFilmTemplate = () => `
   <div class="film-card__controls">
@@ -7,22 +7,8 @@ const createControlFilmTemplate = () => `
     <button class="film-card__controls-item film-card__controls-item--favorite" type="button">Mark as favorite</button>
 </div>`;
 
-export default class ControlFilmView {
-  #element = null;
-
+export default class ControlFilmView extends AbstractView {
   get template() {
     return createControlFilmTemplate();
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }

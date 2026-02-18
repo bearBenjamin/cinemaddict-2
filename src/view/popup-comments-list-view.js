@@ -1,4 +1,4 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 import { humanizeDateComment } from '../utils.js';
 
 const getMessagesUsers = (ids, comments) => {
@@ -77,29 +77,17 @@ const createPopupCommentsListTemplate = (ids, comments) => {
 };
 
 
-export default class PopupCommentsListView {
-  #element = null;
+export default class PopupCommentsListView extends AbstractView {
   #ids = null;
   #comments = null;
 
   constructor (ids, comments) {
+    super();
     this.#ids = ids;
     this.#comments = comments;
   }
 
   get template() {
     return createPopupCommentsListTemplate(this.#ids, this.#comments);
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }
