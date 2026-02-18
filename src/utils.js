@@ -20,7 +20,7 @@ const getRandomCommentsIds = () => {
   return Array.from(ids);
 };
 
-const getRandomBoolean = () => Math.random() >= 0.5;
+const getRandomBoolean = (chance = 0.5) => Math.random() < chance;
 
 const getFormatRuntime = (minutes) => {
   const hours = Math.floor(minutes / 60);
@@ -32,8 +32,8 @@ const getFormatRuntime = (minutes) => {
 const humanizeFilmReleaseDate = (releaseDate) => dayjs(releaseDate).format('DD MMMM YYYY');
 const humanizeDateComment = (dateComment) => dayjs(dateComment).format('YYYY/MM/DD HH:mm');
 
-const getRandomCommentDate = () => {
-  const maxDaysGap = 365 * 3;
+const getRandomCommentDate = (days = 365) => {
+  const maxDaysGap = days * 3;
   const daysGap = Math.floor(Math.random() * maxDaysGap);
 
   return dayjs()

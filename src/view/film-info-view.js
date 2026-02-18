@@ -1,4 +1,4 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createInfoFilmTemplate = (comments, info) => {
   const countComments = comments.length;
@@ -19,30 +19,18 @@ const createInfoFilmTemplate = (comments, info) => {
   <span class="film-card__comments">${countComments} comments</span>
 </a>`;
 };
-export default class InfoFilmView {
-  #element = null;
+export default class InfoFilmView extends AbstractView {
   #comments = null;
   #info = null;
 
   constructor (comments, info) {
+    super();
     this.#comments = comments;
     this.#info = info;
   }
 
   get template() {
     return createInfoFilmTemplate(this.#comments, this.#info);
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }
 
