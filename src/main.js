@@ -1,4 +1,4 @@
-import FilmsPresenter from './presenter/films-presenter.js';
+import MainPresenter from './presenter/main-presenter.js';
 import UserProfileView from './view/user-profile-view.js';
 import FilterFilmsView from './view/fileter-films-view';
 import SortFilmsView from './view/sort-films-view';
@@ -16,7 +16,7 @@ const statisticDate = siteFooterElement.querySelector('.footer__statistics');
 
 const filmsModel = new FilmsModel(films);
 const commentsModel = new CommentsModel(comments);
-const filmsPresenter = new FilmsPresenter (siteMainElement, filmsModel, commentsModel);
+const filmsPresenter = new MainPresenter (siteMainElement, filmsModel, commentsModel);
 
 render (new UserProfileView(films), siteHeaderElement);
 
