@@ -1,7 +1,7 @@
 import MainPresenter from './presenter/main-presenter.js';
 import UserProfileView from './view/user-profile-view.js';
 import FilterFilmsView from './view/fileter-films-view';
-import SortFilmsView from './view/sort-films-view';
+// import SortFilmsView from './view/sort-films-view';
 import Statistic from './view/statistic-view.js';
 import FilmsModel from './model/films-model.js';
 import CommentsModel from './model/comments-model.js';
@@ -23,9 +23,9 @@ render (new UserProfileView(films), siteHeaderElement);
 const filters = generateFilters(films);
 render (new FilterFilmsView(filters), siteMainElement);
 
-if (films.length !== 0) {
-  render (new SortFilmsView(films), siteMainElement);
-}
+// if (films.length !== 0) {
+//   render (new SortFilmsView(films), siteMainElement);
+// }
 
 render (new Statistic(films), statisticDate);
 
